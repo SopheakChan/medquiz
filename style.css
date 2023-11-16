@@ -8,6 +8,58 @@
   transition: all 0.5s linear;
   /*outline: ; */
 }
+
+.medicine-row {
+  padding: 2% 0;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.medicine-title{
+  width: 70%;
+}
+.medicine-title h1{
+  font-size: 80px;
+}
+.medicine-title h1 span{
+  color: #3498db;
+}
+.medicine-title .para{
+  color: black;
+  padding-bottom: 1%;
+}
+
+.medicine-options{
+  width: 95%;
+  font-size: larger;
+  list-style-type: none;
+}
+
+.medicine-options div {
+  background: #3498db;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 5px;
+  color: white;
+}
+
+.medicine-options li a{
+  text-decoration: none;
+  color: black;
+}
+
+.medicine-options img{
+  width: 100%;
+}
+
+
+
+
+
+
+
 .navbar{
   display: flex;
   justify-content: space-around;
@@ -78,6 +130,34 @@
   justify-content: center;
   align-items: center;
 }
+.left_side-year3{
+  width: 80%;
+}
+.left_side-year3 h1{
+  font-size: 80px;
+}
+.right_side-year3{
+  width: 100%;
+  font-size: larger;
+  list-style-type: none;
+}
+
+.right_side-year3{
+  background: #3498db;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 5px;
+  color: white;
+}
+
+.right_side-year3 li a{
+  text-decoration: none;
+  padding: 5px;
+}
+.right_side-year3{
+  padding: 10px;  
+}
+
 .left_side{
   width: 70%;
 }
@@ -233,9 +313,15 @@
   background-color: #f1f1f1;
   margin: 8px 0px;
   outline: none;
+  border-radius: 10px;
+  resize: none;
 }
 .form button{
   display: block;
+  border-radius: 10px;
+  padding: 10px;
+  width: 40%;
+  float: right;
 }
 .links i{
   padding: 10px;
@@ -251,10 +337,83 @@
 }
 /*responsive*/
 @media only screen and (max-width:870px){
+  .medicine-row {
+    padding: 2% 0;
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .medicine-title{
+    width: 100%;
+  }
+  .medicine-title h1{
+    font-size: 50px;
+  }
+  .medicine-title h1 span{
+    color: #3498db;
+  }
+  .medicine-title .para{
+    color: black;
+    padding-bottom: 1%;
+  }
+  
+  .medicine-options{
+    width: 95%;
+    font-size: larger;
+    list-style-type: none;
+  }
+
+  .medicine-options h1 {
+    font-size: 25px;
+  }
+
+  .contact{
+    width: 100%;
+    border: 3px;
+    padding: 30px;
+    font-size:18px;
+  }
+  .form{
+    width: 90%;
+    margin: auto;
+    padding-top: 2%;
+  }
+
+  .form button{
+    width: 100%;
+  }
+  .box{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2%;
+  }
+  .boxes {
+    width: 100%;
+  }
+  .row{
+    padding: 2% 0;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10%;
+  }
+  .left_side h1{
+    font-size: 50px;
+  }
   .burger{
     display: block;
   }
   .navbar{
+    width: 100%;
     height: 400px;
     justify-content: space-around;
     flex-direction: column;
@@ -273,6 +432,26 @@
   .v-class{
     opacity: 0;
 
+  }
+  .about-us{
+    width: 100%;
+    padding: 0;
+    text-align: center;
+  }
+  .container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .box-us{
+    background-color: #ecf0f1;
+    padding: 8px 10px;
+    margin: 0px 10px;
+    border-radius: 10px;
+    transition: 0.5s;
+    padding-block: 10px;
   }
 }
   
@@ -306,6 +485,15 @@
 }
 
 /*footer*/
+.footer-q{
+  background-color:#2d3436;
+  padding: 70px 0;
+}
+.container-q{
+  max-width: 1170px;
+  margin: auto;
+}
+
 .footer{
   background-color:#2d3436;
   padding: 70px 0;
@@ -379,7 +567,7 @@ ul{
   background-color: #ffeef1;
 }
 /*vertical line*/
-#vertical{
+/* #vertical{ 
   border: none;
   width: 1px;
   height: 400px;
@@ -387,9 +575,9 @@ ul{
   margin-left: 40%;
   margin-bottom: 2%;
   margin-top: -400px;
-}
+} */
 /*verticaly*/
-#vertical-year{
+/* #vertical-year{
   border: none;
   width: 1px;
   height: 300px;
@@ -397,7 +585,7 @@ ul{
   margin-left: 40%;
   margin-bottom: 2%;
   margin-top: -150px;
-}
+} */
 
 /*quiz*/
 .custom-box{
@@ -406,6 +594,17 @@ ul{
   margin: 40px auto;
   padding: 30px;
   border-radius: 10px;
+  animation: fadeInRight 1s ease;
+}
+@keyframes fadeInRight{
+  0%{
+    transform: translateX(40px);
+    opacity: 0;
+  }
+  100%{
+    transform: translateX(0px);
+    opacity: 1;
+  }
 }
 
 .custom-box::before,
@@ -551,6 +750,16 @@ ul{
   background-color: white;
   margin-right: 3px;
   margin-top: 15px;
+}
+.quiz-box .answers-indicator div.correct{
+ background-color: rgb(105, 173, 105);
+ background-size: 50%;
+ background-repeat: no-repeat;
+ background-position: center;
+}
+.quiz-box .answers-indicator div.wrong{
+  background-color: rgb(225, 112, 112);
+  background-size: 50%;
 }
 .quiz-box .answers-indicator{
   border-top: 1px solid #000;

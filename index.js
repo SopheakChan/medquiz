@@ -3,11 +3,16 @@ const questionNumber = document.querySelector(".question-number");
 const questionText = document.querySelector(".question-text");
 const optionContainer = document.querySelector(".option-container");
 const answersIndicatorContainer = document.querySelector(".answers-indicator")
+const homeBox = document.querySelector(".home-box");
+const quizBox = document.querySelector(".quiz-box");
+const resultBox = document.querySelector(".result-box");
 
 let questionCounter = 0;
 let currentQuestion;
 let availableQuestions = [];
 let availableOptions = [];
+let correctAnswers = 0;
+let attempt = 0;
 
 //push the questions into availableQuestions Array
 function setAvailableQuestions(){
@@ -72,6 +77,7 @@ function getResult(element){
     element.classList.add("correct");
     //add the indicator to correct mark
     updateAnswerIndicator("correct");
+    correctAnswers++;
   }else{
     //set the red color to the wrong answer
     element.classList.add("wrong");
@@ -85,6 +91,7 @@ function getResult(element){
 
     }
   }
+  attempt++;
   unclickableOptions();
 }
 
@@ -96,6 +103,7 @@ function unclickableOptions(){
   }
 }
 function answersIndicator(){
+  answersIndicatorContainer.innerHTML = '';
   const totalQuestion = quiz.length;
   for (let i=0; i<totalQuestion; i++){
     const indicator = document.createElement("div");
@@ -108,13 +116,58 @@ function updateAnswerIndicator(markType){
 
 function next(){
   if(questionCounter === quiz.length){
-    console.log("quiz over");
+    quizOver();
   }else{
     getNewQuestion();
   }
 }
+function quizOver(){
+  // hide quiz quizBox
+  quizBox.classList.add("hide");
+  // show result box
+  resultBox.classList.remove("hide");
+  quizResult();
+}
+// get the quiz result
+function quizResult(){
+  resultBox.querySelector(".total-question").innerHTML = quiz.length;
+  resultBox.querySelector(".total-attempt").innerHTML = attempt;
+  resultBox.querySelector(".total-correct").innerHTML =correctAnswers;
+  const percentage = (correctAnswers/quiz.length)*100;
+  resultBox.querySelector(".total-wrong").innerHTML = attempt - correctAnswers;
+  resultBox.querySelector(".percentage").innerHTML = percentage.toFixed(2) + "%";
+  resultBox.querySelector(".total-score").innerHTML = correctAnswers + " / " + quiz.length;
+}
 
-window.onload = function(){
+function resetQuiz(){
+  questionCounter = 0;
+  correctAnswers = 0;
+  attempt = 0;
+}
+
+function tryAgainQuiz(){
+  // hide the resultBox
+  resultBox.classList.add("hide");
+  // show the quizBox
+  quizBox.classList.remove("hide");
+  resetQuiz();
+  startQuiz ();
+}
+function goToHome(){
+  // hide result box 
+  resultBox.classList.add("hide");
+  // show home box 
+  homeBox.classList.remove("hide");
+  resetQuiz();
+
+}
+// ### STARTING POINT 
+function startQuiz (){
+  // hide home box 
+  homeBox.classList.add("hide");
+  // show quiz box 
+  quizBox.classList.remove("hide");
+
   //first we wil set all questions in availableQuestions Array
   setAvailableQuestions();
   //seconod we will call getNewQuestion(); function
@@ -123,6 +176,9 @@ window.onload = function(){
   answersIndicator();
 }
 
+window.onload = function (){
+  homeBox.querySelector(".total-question").innerHTML = quiz.length;
+}
 
 
 //dropdown//
